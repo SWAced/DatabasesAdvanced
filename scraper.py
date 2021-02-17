@@ -66,6 +66,7 @@ def func(mh, mt, mb, md):
     print("American Dollar Value of Hash: ", maxd)
 
     df = pd.DataFrame(data={"Hash": mh, "Time" : mt, "BTC" : mb, "American Dollar": md})
+    df.to_csv("logfile.txt", header=None, index=None, sep='\t', mode='a')
     print(df)
 
 
