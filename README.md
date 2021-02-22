@@ -34,7 +34,7 @@ sudo systemctl status mongodb
 
 *You can run the status command above to check if your mongod is running.*
 
-**Step 5:**
+**Step 3:**
 
 mongo
 
@@ -42,7 +42,7 @@ mongodb://127.0.0.1:27017
 
 *This command is used to connect to the local database.*
 
-**Optional Step 6:**
+**Optional Step 4:**
 
 *You can use this step if you wish to create a user with root privileges in your database. Note that the "superuser" and "pass" are just examples for username and password respectively. The password "pass" should never be used as password.*
 
