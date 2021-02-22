@@ -22,48 +22,26 @@ To use this scraper, you will need to have the following libraries:
 
 **Step 1:**
 
-sudo apt-get update
-
-sudo apt-get install -y mongodb
+First, download the .sh file.
 
 **Step 2:**
 
-sudo systemctl start mongodb
+Then, open the command line and type the following command:
 
-sudo systemctl status mongodb
-
-*You can run the status command above to check if your mongod is running.*
+chmod +x mongodbinst.sh
 
 **Step 3:**
 
-mongo
+To run the script, you use the following command:
 
-mongodb://127.0.0.1:27017
+bash mongodbinst.sh
 
-*This command is used to connect to the local database.*
-
-**Optional Step 4:**
-
-*You can use this step if you wish to create a user with root privileges in your database. Note that the "superuser" and "pass" are just examples for username and password respectively. The password "pass" should never be used as password.*
-
-use admin
-
-db.createUser(
-  {
-  user: "superuser",
-  pws: "pass",
-  roles: ["root"]
-  }
-)
-
-show users
-db.shutdownServer()
-exit
+Now the script will automatically install mongodb and make it active, so you can run the scraper without issue.
 
 <br>
 <br>
 
-<h1>Now you can run the script using the following steps below.</h1>
+# To run the scraper, follow the steps below.
 
 **Step 1:**
 
