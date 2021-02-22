@@ -22,39 +22,29 @@ To use this scraper, you will need to have the following libraries:
 
 **Step 1:**
 
-wget -q0 - https://www.mongodb.org/static/pgp/server -4.2.asc | sudo apt-key add -
+sudo apt-get update
+
+sudo apt-get install -y mongodb
 
 **Step 2:**
 
-echo "deb [ arch=amd64, arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org -4.2.list
+sudo systemctl start mongodb
 
-**Step 3:**
-
-sudo apt-get update
-
-sudo apt-get install -y mongodb-org
-
-**Step 4:**
-
-sudo systemctl start mongod
-
-sudo systemctl status mongod
+sudo systemctl status mongodb
 
 *You can run the status command above to check if your mongod is running.*
 
 **Step 5:**
 
-cd <mongodb installation dir>/bin
-
 mongo
 
 mongodb://127.0.0.1:27017
 
+*This command is used to connect to the local database.*
+
 **Optional Step 6:**
 
 *You can use this step if you wish to create a user with root privileges in your database. Note that the "superuser" and "pass" are just examples for username and password respectively. The password "pass" should never be used as password.*
-
-mongo --host HOST --port PORT
 
 use admin
 
@@ -69,8 +59,6 @@ db.createUser(
 show users
 db.shutdownServer()
 exit
-
-mongod --auth
 
 <br>
 <br>
