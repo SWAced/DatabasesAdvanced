@@ -18,7 +18,7 @@ To use this scraper, you will need to have the following libraries:
 
 **You need to make sure you have Python installed.**
 
-**Before we run the script, we need to make sure that MongoDB is properly set up on our Linux machine. On Windows, it is quite simple since you can just download MongoDB from the site and then use MongoDB Compass to have a visualiser. However, on Linux things are different. Here are steps to install MongoDB on Linux:**
+# Before we run the script, we need to make sure that MongoDB is properly set up on our Linux machine. On Windows, it is quite simple since you can just download MongoDB from the site and then use MongoDB Compass to have a visualiser. However, on Linux things are different. Here are steps to install MongoDB on Linux.
 
 **Step 1:**
 
@@ -36,7 +36,7 @@ To run the script, you use the following command:
 
 <code>bash mongodbinst.sh</code>
 
-Now the script will automatically install mongodb and make it active, so you can run the scraper without issue.
+Now the script will automatically install mongodb and make it active, so you can run the scraper without issues.
 
 <br>
 <br>
