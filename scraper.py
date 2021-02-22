@@ -82,5 +82,5 @@ col_crypto = db["Crypto"]
 #db.Crypto.delete_many({})
 
 while True:
-    time.sleep(5)
+    time.sleep(60)
     func(mh, mt, mb, md, col_crypto)
