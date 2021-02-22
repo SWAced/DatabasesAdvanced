@@ -79,7 +79,8 @@ def func(mh, mt, mb, md, col):
 
 db = client["Cryptocurrency"]
 col_crypto = db["Crypto"]
+#db.Crypto.delete_many({})
 
 while True:
-    time.sleep(60)
+    time.sleep(5)
     func(mh, mt, mb, md, col_crypto)
