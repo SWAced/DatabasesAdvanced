@@ -28,13 +28,13 @@ First, download the .sh file.
 
 Then, open the command line and type the following command:
 
-chmod +x mongodbinst.sh
+<code>chmod +x mongodbinst.sh</code>
 
 **Step 3:**
 
 To run the script, you use the following command:
 
-bash mongodbinst.sh
+<code>bash mongodbinst.sh</code>
 
 Now the script will automatically install mongodb and make it active, so you can run the scraper without issue.
 
