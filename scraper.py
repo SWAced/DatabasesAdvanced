@@ -3,13 +3,16 @@ import requests
 import pandas as pd
 import math
 import time
+import pymongo as mongo
+
+client = mongo.MongoClient("mongodb://127.0.0.1:27017")
 
 mh = []
 mt = []
 mb = []
 md = []
 
-def func(mh, mt, mb, md):
+def func(mh, mt, mb, md, col):
     url = "https://www.blockchain.com/btc/unconfirmed-transactions"
     page = requests.get(url)
 
@@ -60,6 +63,11 @@ def func(mh, mt, mb, md):
     mt.append(maxtime)
     maxbtc = btcarray[index]
     mb.append(maxbtc)
+
+    crypto = {"Hash": maxhash, "Time" : maxtime, "BTC_value" : maxbtc, "Dollar_value" : maxd}
+
+    col.insert_one(crypto)
+
     print("Most Valuable Hash: ", maxhash)
     print("Time of Hash: ", maxtime)
     print("BTC Value of Hash: ", maxbtc)
@@ -69,7 +77,9 @@ def func(mh, mt, mb, md):
     df.to_csv("logfile.txt", header=None, index=None, sep='\t', mode='a')
     print(df)
 
+db = client["Cryptocurrency"]
+col_crypto = db["Crypto"]
 
 while True:
     time.sleep(60)
-    func(mh, mt, mb, md)
+    func(mh, mt, mb, md, col_crypto)
