@@ -9,6 +9,7 @@ To use this scraper, you will need to have the following libraries:
 - math
 - time
 - pymongo
+- redis
 
 **To install these libraries, you will need python3 (as you might have guessed, considering this is written in python) and you will use the following command to install the libraries:**
 
@@ -18,30 +19,32 @@ To use this scraper, you will need to have the following libraries:
 
 **You need to make sure you have Python installed.**
 
-**Before we run the script, we need to make sure that MongoDB is properly set up on our Linux machine. On Windows, it is quite simple since you can just download MongoDB from the site and then use MongoDB Compass to have a visualiser. However, on Linux things are different. Here are steps to install MongoDB on Linux.**
+**Before we run the script, we need to make sure that MongoDB and Redis are properly set up on our Linux machine. On Windows, it is quite simple since you can just download MongoDB from the site and then use MongoDB Compass to have a visualiser. However, on Linux things are different. Here are steps to install MongoDB and Redis on Linux.**
 
 **Step 1:**
 
-First, download the .sh file.
+First, download the .sh files.
 
 **Step 2:**
 
-Then, open the command line and type the following command:
+Then, open the command line and type the following commands:
 
 <code>chmod +x mongodbinst.sh</code>
+<code>chmod +x redis.sh</code>
 
 **Step 3:**
 
-To run the script, you use the following command:
+To run the scripts, you use the following command:
 
 <code>bash mongodbinst.sh</code>
+<code>bash redis.sh</code>
 
-Now the script will automatically install mongodb and make it active, so you can run the scraper without issues.
+Now the script will automatically install mongodb and redis and make it active, so you can run the scraper & extraction without issues.
 
 <br>
 <br>
 
-# To run the scraper, follow the steps below.
+# To run the python files, follow the steps below.
 
 **Step 1:**
 
@@ -51,12 +54,14 @@ You can clone my repository using the following command:
 <br>
 
 **Step 2:**
-On Linux, you have to make the script executable in order for it to execute. To do this, using the following command:
+On Linux, you have to make the scripts executable in order for them to execute. To do this, use the following command:
 <br>
 <code>chmod +x scraper.py</code>
+<code>chmod +x extract.py</code>
 <br>
 
 **Step 3:**
 Assuming you already have Python installed, you can use the following command to run the script:
 <br>
 <code>python3 scraper.py</code>
+<code>python3 extract.py</code>
