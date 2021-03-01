@@ -14,6 +14,7 @@ mb = []
 md = []
 r = redis.Redis()
 
+
 def func(mh, mt, mb, md, col, r):
     url = "https://www.blockchain.com/btc/unconfirmed-transactions"
     page = requests.get(url)
@@ -60,6 +61,10 @@ def func(mh, mt, mb, md, col, r):
         #print(dtext)
         #print()
     
+    r.expire("Hash", 60)
+    r.expire("Time", 60)
+    r.expire("Bitcoin value", 60)
+    r.expire("Dollar value", 60)
     valuedict = {"Hash": hasharray, "Time": timearray, "BTC_value": btcarray, "Dollar_value": dollararray}
     # maxd = max(dollararray)
     # md.append(maxd)
