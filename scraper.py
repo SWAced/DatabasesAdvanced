@@ -4,6 +4,7 @@ import pandas as pd
 import math
 import time
 import pymongo as mongo
+import redis
 
 client = mongo.MongoClient("mongodb://127.0.0.1:27017")
 
@@ -11,8 +12,9 @@ mh = []
 mt = []
 mb = []
 md = []
+r = redis.Redis()
 
-def func(mh, mt, mb, md, col):
+def func(mh, mt, mb, md, col, r):
     url = "https://www.blockchain.com/btc/unconfirmed-transactions"
     page = requests.get(url)
 
@@ -42,45 +44,51 @@ def func(mh, mt, mb, md, col):
         btc = t.find('div', class_='sc-1au2w4e-0 fTyXWG')
         htext = hashes.text[4:len(hashes.text)].strip()
         hasharray.append(htext)
+        r.append("Hash", htext)
         ttext = time.text[4:len(time.text)].strip()
         timearray.append(ttext)
+        r.append("Time", ttext)
         btext = float(btc.text[12:len(btc.text) - 3].strip())
         btcarray.append(btext)
+        r.append("Bitcoin value", btext)
         dtext = btext * btcvaluedollar
         dollararray.append(dtext)
+        r.append("Dollar value", dtext)
         #print(htext)
         #print(ttext)
         #print(btext)
         #print(dtext)
         #print()
     
-    maxd = max(dollararray)
-    md.append(maxd)
-    index = dollararray.index(maxd)
-    maxhash = hasharray[index]
-    mh.append(maxhash)
-    maxtime = timearray[index]
-    mt.append(maxtime)
-    maxbtc = btcarray[index]
-    mb.append(maxbtc)
+    valuedict = {"Hash": hasharray, "Time": timearray, "BTC_value": btcarray, "Dollar_value": dollararray}
+    r.get("Hash")
+    # maxd = max(dollararray)
+    # md.append(maxd)
+    # index = dollararray.index(maxd)
+    # maxhash = hasharray[index]
+    # mh.append(maxhash)
+    # maxtime = timearray[index]
+    # mt.append(maxtime)
+    # maxbtc = btcarray[index]
+    # mb.append(maxbtc)
 
-    crypto = {"Hash": maxhash, "Time" : maxtime, "BTC_value" : maxbtc, "Dollar_value" : maxd}
+    # crypto = {"Hash": maxhash, "Time" : maxtime, "BTC_value" : maxbtc, "Dollar_value" : maxd}
 
-    col.insert_one(crypto)
+    # col.insert_one(crypto)
 
-    print("Most Valuable Hash: ", maxhash)
-    print("Time of Hash: ", maxtime)
-    print("BTC Value of Hash: ", maxbtc)
-    print("American Dollar Value of Hash: ", maxd)
+    # print("Most Valuable Hash: ", maxhash)
+    # print("Time of Hash: ", maxtime)
+    # print("BTC Value of Hash: ", maxbtc)
+    # print("American Dollar Value of Hash: ", maxd)
 
-    df = pd.DataFrame(data={"Hash": mh, "Time" : mt, "BTC" : mb, "American Dollar": md})
-    df.to_csv("logfile.txt", header=None, index=None, sep='\t', mode='a')
-    print(df)
+    # df = pd.DataFrame(data={"Hash": mh, "Time" : mt, "BTC" : mb, "American Dollar": md})
+    # df.to_csv("logfile.txt", header=None, index=None, sep='\t', mode='a')
+    # print(df)
 
 db = client["Cryptocurrency"]
 col_crypto = db["Crypto"]
 #db.Crypto.delete_many({})
 
 while True:
+    func(mh, mt, mb, md, col_crypto, r)
     time.sleep(60)
-    func(mh, mt, mb, md, col_crypto)
