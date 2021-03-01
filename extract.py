@@ -8,9 +8,9 @@ import redis
 
 r = redis.Redis()
 
-hashes = r.lrange("Hash", 0, -1)
-times = r.lrange("Time", 0, -1)
-btc = r.lrange("Bitcoin value", 0, -1)
-dollar = r.lrange("Dollar value", 0, -1)
+hashes = map(str, r.lrange("Hash", 0, -1))
+times = map(str, r.lrange("Time", 0, -1))
+btc = map(float, r.lrange("Bitcoin value", 0, -1))
+dollar = map(float, r.lrange("Dollar value", 0, -1))
 
 print(hashes)
