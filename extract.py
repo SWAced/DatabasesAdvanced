@@ -14,14 +14,14 @@ db = client["Cryptocurrency"]
 col_crypto = db["Crypto"]
 
 def eval_func(r, col):
-    hashes = map(str, r.lrange("Hash", 0, -1))
-    times = map(str, r.lrange("Time", 0, -1))
-    btc = map(float, r.lrange("Bitcoin value", 0, -1))
-    dollar = map(float, r.lrange("Dollar value", 0, -1))
+    hashes = list(map(str, r.lrange("Hash", 0, -1)))
+    times = list(map(str, r.lrange("Time", 0, -1)))
+    btc = list(map(float, r.lrange("Bitcoin value", 0, -1)))
+    dollar = list(map(float, r.lrange("Dollar value", 0, -1)))
     maxd = max(dollar)
     index = dollar.index(maxd)
     maxh = hashes[index]
-    maxt = time[index]
+    maxt = times[index]
     maxb = btc[index]
     crypto = {"Hash": maxh, "Time": maxt, "Bitcoin value": maxb, "Dollar value": maxd}
     col.insert_one(crypto)
