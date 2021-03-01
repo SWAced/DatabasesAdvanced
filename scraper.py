@@ -27,7 +27,7 @@ def func(mh, mt, mb, md, col, r):
     soup2 = BeautifulSoup(page2.content, 'html.parser')
     total2 = soup2.find('div',class_='price-large')
     btcvaluedollar = float(total2.text[1:].replace(',', ''))
-    print(btcvaluedollar)
+    #print(btcvaluedollar)
 
     #price-large
 
@@ -44,16 +44,16 @@ def func(mh, mt, mb, md, col, r):
         btc = t.find('div', class_='sc-1au2w4e-0 fTyXWG')
         htext = hashes.text[4:len(hashes.text)].strip()
         hasharray.append(htext)
-        r.rpush("Hash", htext)
+        r.rpush("Hash", str(htext))
         ttext = time.text[4:len(time.text)].strip()
         timearray.append(ttext)
-        r.rpush("Time", ttext)
+        r.rpush("Time", str(ttext))
         btext = float(btc.text[12:len(btc.text) - 3].strip())
         btcarray.append(btext)
-        r.rpush("Bitcoin value", btext)
+        r.rpush("Bitcoin value", str(btext))
         dtext = btext * btcvaluedollar
         dollararray.append(dtext)
-        r.rpush("Dollar value", dtext)
+        r.rpush("Dollar value", str(dtext))
         #print(htext)
         #print(ttext)
         #print(btext)
