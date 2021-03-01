@@ -30,6 +30,7 @@ First, download the .sh files.
 Then, open the command line and type the following commands:
 
 <code>chmod +x mongodbinst.sh</code>
+<br>
 <code>chmod +x redis.sh</code>
 
 **Step 3:**
@@ -37,6 +38,7 @@ Then, open the command line and type the following commands:
 To run the scripts, you use the following command:
 
 <code>bash mongodbinst.sh</code>
+<br>
 <code>bash redis.sh</code>
 
 Now the script will automatically install mongodb and redis and make it active, so you can run the scraper & extraction without issues.
@@ -57,6 +59,7 @@ You can clone my repository using the following command:
 On Linux, you have to make the scripts executable in order for them to execute. To do this, use the following command:
 <br>
 <code>chmod +x scraper.py</code>
+<br>
 <code>chmod +x extract.py</code>
 <br>
 
@@ -64,4 +67,5 @@ On Linux, you have to make the scripts executable in order for them to execute. 
 Assuming you already have Python installed, you can use the following command to run the script:
 <br>
 <code>python3 scraper.py</code>
+<br>
 <code>python3 extract.py</code>
