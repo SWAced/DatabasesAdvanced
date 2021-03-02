@@ -64,7 +64,7 @@ On Linux, you have to make the scripts executable in order for them to execute. 
 <br>
 
 **Step 3:**
-Assuming you already have Python installed, you can use the following command to run the script:
+Assuming you already have Python installed, you can use the following commands to run the scripts:
 <br>
 <code>python3 scraper.py</code>
 <br>
